@@ -41,6 +41,8 @@ public class Produto {
 	@CollectionTable(name="produto_precos", joinColumns = {@JoinColumn(name = "produto_id", referencedColumnName = "id")})
 	private List<Preco> precos; 
 	
+	private String sumarioPath;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -89,10 +91,18 @@ public class Produto {
 		this.dataLancamento = dataLancamento;
 	}
 
+	public String getSumarioPath() {
+		return sumarioPath;
+	}
+
+	public void setSumarioPath(String sumarioPath) {
+		this.sumarioPath = sumarioPath;
+	}
+
 	@Override
 	public String toString() {
 		return "Produto [id=" + id + ", titulo=" + titulo + ", descricao=" + descricao + ", paginas=" + paginas
-				+ ", dataLencamento=" + dataLancamento + ", precos=" + precos + "]";
+				+ ", dataLancamento=" + dataLancamento + ", precos=" + precos + ", sumarioPath=" + sumarioPath + "]";
 	}
 
 	@Override
@@ -104,6 +114,7 @@ public class Produto {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((paginas == null) ? 0 : paginas.hashCode());
 		result = prime * result + ((precos == null) ? 0 : precos.hashCode());
+		result = prime * result + ((sumarioPath == null) ? 0 : sumarioPath.hashCode());
 		result = prime * result + ((titulo == null) ? 0 : titulo.hashCode());
 		return result;
 	}
@@ -142,6 +153,11 @@ public class Produto {
 				return false;
 		} else if (!precos.equals(other.precos))
 			return false;
+		if (sumarioPath == null) {
+			if (other.sumarioPath != null)
+				return false;
+		} else if (!sumarioPath.equals(other.sumarioPath))
+			return false;
 		if (titulo == null) {
 			if (other.titulo != null)
 				return false;
@@ -149,5 +165,4 @@ public class Produto {
 			return false;
 		return true;
 	}
-	
 }

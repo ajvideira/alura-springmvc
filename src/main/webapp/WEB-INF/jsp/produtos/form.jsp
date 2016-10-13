@@ -13,7 +13,7 @@
 
 	<h1>Cadastro de Produtos</h1>
 	<!-- //pageContext.request.contextPath -->
-	<form action="<c:url value="/produtos" />" method="post">
+	<form action="<c:url value="/produtos" />" method="post" enctype="multipart/form-data">
 		<div>
 			<form:label path="produto.titulo" title="Título">Título</form:label>
 			<form:input path="produto.titulo" />
@@ -45,6 +45,11 @@
 				<form:hidden path="produto.precos[${status.index}].tipo" value="${tipoPreco}" />
 			</div>
 		</c:forEach>
+
+		<div>
+			<label title="Sumário">Sumário</label>
+			<input type="file" name="sumario" />
+		</div>
 
 		<div>
 			<button>Enviar</button>

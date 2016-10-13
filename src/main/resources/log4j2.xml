@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+	<Appenders>
+		<Console name="CONSOLE" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{dd/MM/yyyy HH:mm:ss.SSS} [%t] %-5level %logger{36}:%L - %msg%n" />
+		</Console>
+		<File name="FILE" fileName="siat-solocriado-views.log">
+      		<PatternLayout pattern="%d{dd/MM/yyyy HH:mm:ss.SSS} [%t] %-5level %logger{36}:%L - %msg%n" />
+    	</File>
+	</Appenders>
+	<Loggers>
+		<!--  <Root level="debug">
+			<AppenderRef ref="Console" />
+		</Root>-->
+		<logger name="br.com.ajvideira" level="INFO" />
+		
+		<Root level="INFO">
+			<AppenderRef ref="CONSOLE"/>
+			<AppenderRef ref="FILE"/>
+		</Root>
+		
+	</Loggers>
+</Configuration>
