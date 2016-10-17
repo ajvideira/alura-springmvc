@@ -28,7 +28,7 @@
 				<td>${produto.titulo}</td>
 				<td>${produto.descricao}</td>
 				<td>${produto.paginas}</td>
-				<td><a href="${s:mvcUrl('PC#detalhe').arg(0, produto.id).build()}">Visualizar</a></td>
+				<td><a href='<c:url value="produtos/detalhe/${produto.id}" />'>Visualizar</a></td>
 			</tr>
 		</c:forEach>
 		
