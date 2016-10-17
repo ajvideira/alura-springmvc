@@ -1,4 +1,4 @@
-package br.com.ajvideira.casadocodigo.configuration;
+package br.com.ajvideira.cursos.alura.springmvc.configuration;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -13,7 +13,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @EnableWebMvc
-@ComponentScan(basePackages = "br.com.ajvideira.casadocodigo")
+@ComponentScan(basePackages = "br.com.ajvideira.cursos.alura.springmvc")
 public class AppWebConfiguration {
 
 	@Bean

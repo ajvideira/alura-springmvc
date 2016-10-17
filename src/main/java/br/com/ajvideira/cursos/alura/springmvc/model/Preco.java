@@ -1,4 +1,4 @@
-package br.com.ajvideira.casadocodigo.model;
+package br.com.ajvideira.cursos.alura.springmvc.model;
 
 import java.math.BigDecimal;
 

@@ -1,4 +1,4 @@
-package br.com.ajvideira.casadocodigo.infra;
+package br.com.ajvideira.cursos.alura.springmvc.infra;
 
 import java.io.File;
 import java.io.IOException;

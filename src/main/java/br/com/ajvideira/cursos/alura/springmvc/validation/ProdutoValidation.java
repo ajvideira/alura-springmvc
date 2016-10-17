@@ -1,10 +1,10 @@
-package br.com.ajvideira.casadocodigo.validation;
+package br.com.ajvideira.cursos.alura.springmvc.validation;
 
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import br.com.ajvideira.casadocodigo.model.Produto;
+import br.com.ajvideira.cursos.alura.springmvc.model.Produto;
 
 public class ProdutoValidation implements Validator {
 

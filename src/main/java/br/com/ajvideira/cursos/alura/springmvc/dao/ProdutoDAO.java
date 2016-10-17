@@ -1,4 +1,4 @@
-package br.com.ajvideira.casadocodigo.dao;
+package br.com.ajvideira.cursos.alura.springmvc.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.ajvideira.casadocodigo.model.Produto;
+import br.com.ajvideira.cursos.alura.springmvc.model.Produto;
 
 @Repository
 @Transactional

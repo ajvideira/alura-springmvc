@@ -1,4 +1,4 @@
-package br.com.ajvideira.casadocodigo.configuration;
+package br.com.ajvideira.cursos.alura.springmvc.configuration;
 
 import javax.servlet.Filter;
 import javax.servlet.MultipartConfigElement;

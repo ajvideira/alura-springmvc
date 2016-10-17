@@ -1,4 +1,4 @@
-package br.com.ajvideira.casadocodigo.controller;
+package br.com.ajvideira.cursos.alura.springmvc.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +17,11 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.com.ajvideira.casadocodigo.dao.ProdutoDAO;
-import br.com.ajvideira.casadocodigo.infra.FileSaver;
-import br.com.ajvideira.casadocodigo.model.Produto;
-import br.com.ajvideira.casadocodigo.model.TipoPreco;
-import br.com.ajvideira.casadocodigo.validation.ProdutoValidation;
+import br.com.ajvideira.cursos.alura.springmvc.dao.ProdutoDAO;
+import br.com.ajvideira.cursos.alura.springmvc.infra.FileSaver;
+import br.com.ajvideira.cursos.alura.springmvc.model.Produto;
+import br.com.ajvideira.cursos.alura.springmvc.model.TipoPreco;
+import br.com.ajvideira.cursos.alura.springmvc.validation.ProdutoValidation;
 
 @Controller
 @RequestMapping("/produtos")

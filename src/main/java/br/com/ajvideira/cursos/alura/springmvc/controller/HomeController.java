@@ -1,4 +1,4 @@
-package br.com.ajvideira.casadocodigo.controller;
+package br.com.ajvideira.cursos.alura.springmvc.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

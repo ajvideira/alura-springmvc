@@ -1,4 +1,4 @@
-package br.com.ajvideira.casadocodigo.configuration;
+package br.com.ajvideira.cursos.alura.springmvc.configuration;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,7 +27,7 @@ public class JPAConfiguration {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setUsername("postgres");
 		dataSource.setPassword("root");
-		dataSource.setUrl("jdbc:postgresql://localhost:5432/casadocodigo_springmvc");
+		dataSource.setUrl("jdbc:postgresql://localhost:5432/alura_springmvc");
 		dataSource.setDriverClassName("org.postgresql.Driver");
 		factory.setDataSource(dataSource);
 		
@@ -37,7 +37,7 @@ public class JPAConfiguration {
 		map.put("hibernate.hbm2ddl.auto", "update");
 		factory.setJpaPropertyMap(map);
 		
-		factory.setPackagesToScan("br.com.ajvideira.casadocodigo.model");
+		factory.setPackagesToScan("br.com.ajvideira.cursos.alura.springmvc.model");
 		
 		return factory;
 	}
