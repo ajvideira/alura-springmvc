@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.context.annotation.RequestScope;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -25,6 +26,7 @@ import br.com.ajvideira.cursos.alura.springmvc.validation.ProdutoValidation;
 
 @Controller
 @RequestMapping("/produtos")
+@RequestScope
 public class ProdutosController {
 
 	@Autowired

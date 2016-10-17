@@ -24,8 +24,8 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 		resolver.setPrefix("/WEB-INF/jsp/");
 		resolver.setSuffix(".jsp");
 
-		//resolver.setExposeContextBeansAsAttributes(true);
-		
+		// resolver.setExposeContextBeansAsAttributes(true);
+
 		resolver.setExposedContextBeanNames("carrinhoCompras");
 		return resolver;
 	}
@@ -50,7 +50,7 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 
 		return conversionService;
 	}
-	
+
 	@Bean
 	public MultipartResolver multipartResolver() {
 		return new StandardServletMultipartResolver();
@@ -60,5 +60,5 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	}
-	
+
 }
