@@ -1,5 +1,7 @@
 package br.com.ajvideira.cursos.alura.springmvc.model;
 
+import java.math.BigDecimal;
+import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -16,20 +18,35 @@ public class CarrinhoCompras {
 		itens = new LinkedHashMap<CarrinhoItem, Integer>();
 	}
 	
+ 	public Collection<CarrinhoItem> getItens() {
+		return itens.keySet();
+	}
+ 	
 	public void add(CarrinhoItem item) {
-		itens.put(item, getQuantidadeItem(item)+1);
+		itens.put(item, getQuantidade(item) + 1);
 	}
 
-	private Integer getQuantidadeItem(CarrinhoItem item) {
-		if (itens.containsKey(item)) {
-			return itens.get(item);
-		} else {
+	public Integer getQuantidade(CarrinhoItem item) {
+		if (!itens.containsKey(item)) {
 			return 0;
 		}
+		return itens.get(item);
 	}
 	
-	public Integer getQuantidade() {
+	public int getQuantidade() {
 		return itens.values().stream().reduce(0, (proximo, acumulado) -> acumulado + proximo);
+	}
+	
+	public BigDecimal getTotal(CarrinhoItem item) {
+		return item.getPreco().multiply(new BigDecimal(getQuantidade(item)));
+	}
+	
+	public BigDecimal getTotal() {
+		BigDecimal total = BigDecimal.ZERO;
+		for (CarrinhoItem item : itens.keySet()) {
+			total = total.add(getTotal(item));
+		}
+		return total;
 	}
 	
 }

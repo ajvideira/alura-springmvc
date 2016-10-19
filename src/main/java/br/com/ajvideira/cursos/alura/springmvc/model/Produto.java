@@ -1,5 +1,6 @@
 package br.com.ajvideira.cursos.alura.springmvc.model;
 
+import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.List;
 
@@ -41,15 +42,8 @@ public class Produto {
 	@CollectionTable(name="produto_precos", joinColumns = {@JoinColumn(name = "produto_id", referencedColumnName = "id")})
 	private List<Preco> precos; 
 	
+	@Column(name="sumario_path")
 	private String sumarioPath;
-	
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
 	
 	public String getTitulo() {
 		return titulo;
@@ -75,50 +69,47 @@ public class Produto {
 		this.paginas = paginas;
 	}
 	
+	public Integer getId() {
+		return id;
+	}
+	
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
 	public List<Preco> getPrecos() {
 		return precos;
 	}
-
+	
 	public void setPrecos(List<Preco> precos) {
 		this.precos = precos;
 	}
-
+	
 	public Calendar getDataLancamento() {
 		return dataLancamento;
 	}
-
+	
 	public void setDataLancamento(Calendar dataLancamento) {
 		this.dataLancamento = dataLancamento;
 	}
-
+	
+	@Override
+	public String toString() {
+		return "Produto [titulo=" + titulo + ", descricao=" + descricao + ", paginas=" + paginas + "]";
+	}
 	public String getSumarioPath() {
 		return sumarioPath;
 	}
-
 	public void setSumarioPath(String sumarioPath) {
 		this.sumarioPath = sumarioPath;
 	}
-
-	@Override
-	public String toString() {
-		return "Produto [id=" + id + ", titulo=" + titulo + ", descricao=" + descricao + ", paginas=" + paginas
-				+ ", dataLancamento=" + dataLancamento + ", precos=" + precos + ", sumarioPath=" + sumarioPath + "]";
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((dataLancamento == null) ? 0 : dataLancamento.hashCode());
-		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((paginas == null) ? 0 : paginas.hashCode());
-		result = prime * result + ((precos == null) ? 0 : precos.hashCode());
-		result = prime * result + ((sumarioPath == null) ? 0 : sumarioPath.hashCode());
-		result = prime * result + ((titulo == null) ? 0 : titulo.hashCode());
+		result = prime * result + id;
 		return result;
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -128,41 +119,14 @@ public class Produto {
 		if (getClass() != obj.getClass())
 			return false;
 		Produto other = (Produto) obj;
-		if (dataLancamento == null) {
-			if (other.dataLancamento != null)
-				return false;
-		} else if (!dataLancamento.equals(other.dataLancamento))
-			return false;
-		if (descricao == null) {
-			if (other.descricao != null)
-				return false;
-		} else if (!descricao.equals(other.descricao))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (paginas == null) {
-			if (other.paginas != null)
-				return false;
-		} else if (!paginas.equals(other.paginas))
-			return false;
-		if (precos == null) {
-			if (other.precos != null)
-				return false;
-		} else if (!precos.equals(other.precos))
-			return false;
-		if (sumarioPath == null) {
-			if (other.sumarioPath != null)
-				return false;
-		} else if (!sumarioPath.equals(other.sumarioPath))
-			return false;
-		if (titulo == null) {
-			if (other.titulo != null)
-				return false;
-		} else if (!titulo.equals(other.titulo))
+		if (id != other.id)
 			return false;
 		return true;
 	}
+	
+	public BigDecimal precoPara(TipoPreco tipoPreco) {
+		return precos.stream().filter(preco -> preco.getTipo().equals(tipoPreco))
+				.findFirst().get().getValor();
+	}
+	
 }

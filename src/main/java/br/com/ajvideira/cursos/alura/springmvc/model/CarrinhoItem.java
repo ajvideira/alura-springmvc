@@ -1,10 +1,24 @@
 package br.com.ajvideira.cursos.alura.springmvc.model;
 
+import java.math.BigDecimal;
+
 public class CarrinhoItem {
 
 	private Produto produto;
-	
-	private TipoPreco tipo;
+	private TipoPreco tipoPreco;
+
+	public CarrinhoItem() {
+
+	}
+
+	public CarrinhoItem(Produto produto, TipoPreco tipoPreco) {
+		this.produto = produto;
+		this.tipoPreco = tipoPreco;
+	}
+
+	public BigDecimal getPreco() {
+		return produto.precoPara(tipoPreco);
+	}
 
 	public Produto getProduto() {
 		return produto;
@@ -14,12 +28,12 @@ public class CarrinhoItem {
 		this.produto = produto;
 	}
 
-	public TipoPreco getTipo() {
-		return tipo;
+	public TipoPreco getTipoPreco() {
+		return tipoPreco;
 	}
 
-	public void setTipo(TipoPreco tipo) {
-		this.tipo = tipo;
+	public void setTipoPreco(TipoPreco tipoPreco) {
+		this.tipoPreco = tipoPreco;
 	}
 
 	@Override
@@ -27,7 +41,7 @@ public class CarrinhoItem {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((produto == null) ? 0 : produto.hashCode());
-		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
+		result = prime * result + ((tipoPreco == null) ? 0 : tipoPreco.hashCode());
 		return result;
 	}
 
@@ -45,14 +59,13 @@ public class CarrinhoItem {
 				return false;
 		} else if (!produto.equals(other.produto))
 			return false;
-		if (tipo != other.tipo)
+		if (tipoPreco != other.tipoPreco)
 			return false;
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "CarrinhoItem [produto=" + produto + ", tipo=" + tipo + "]";
+	public BigDecimal getTotal(Integer quantidade) {
+		return this.getPreco().multiply(new BigDecimal(quantidade));
 	}
-	
+
 }
