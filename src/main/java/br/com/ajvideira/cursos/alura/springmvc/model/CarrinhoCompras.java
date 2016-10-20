@@ -48,5 +48,10 @@ public class CarrinhoCompras {
 		}
 		return total;
 	}
+
+	
+	public void remove(CarrinhoItem item) {
+		itens.remove(item);
+	}
 	
 }

@@ -108,15 +108,19 @@
 					<td class="cart-img-col"><img
 						src="http://cdn.shopify.com/s/files/1/0155/7645/products/css-eficiente-featured_large.png?v=1435245145"
 						width="71px" height="100px" /></td>
-					<td class="item-title">${item.produto.titulo}</td>
+					<td class="item-title">${item.produto.titulo} (${item.tipoPreco})</td>
 					<td class="numeric-cell">${item.preco}</td>
 					<td class="quantity-input-cell"><input type="number" min="0"
 						readonly="readonly" id="updates_4082273665"
 						name="updates[4082273665]" value="${carrinhoCompras.getQuantidade(item)}" /></td>
 					<td class="numeric-cell">${carrinhoCompras.getTotal(item)}</td>
-					<td class="remove-item"><form action="<c:url value="/carrinho/remover" />"><img
-							src="${contextPath }resources/imagens/excluir.png" alt="Excluir"
-							title="Excluir" /></form></td>
+					<td class="remove-item">
+						<form action="<c:url value="/carrinho/remove" />">
+							<input type="hidden" name="produtoId" value="${item.produtoId}" />
+							<input type="hidden" name="tipoPreco" value="${item.tipoPreco}" />
+							<img src="${contextPath }resources/imagens/excluir.png" alt="Excluir" title="Excluir" />
+						</form>
+					</td>
 				</tr>
 			</c:forEach>
 			</tbody>
@@ -144,8 +148,7 @@
 		</ul>
 
 		<h2>
-			<a href="http://www.casadocodigo.com.br">Veja todos os livros que
-				publicamos!</a>
+			<a href="<c:url value="/produtos" />">Veja todos os livros que publicamos!</a>
 		</h2>
 	</section>
 
