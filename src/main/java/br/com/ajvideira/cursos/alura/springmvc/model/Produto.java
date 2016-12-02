@@ -8,6 +8,7 @@ import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -38,12 +39,12 @@ public class Produto {
 	@Column(name="data_lancamento")
 	private Calendar dataLancamento;
 	
-	@ElementCollection
+	@ElementCollection(fetch=FetchType.EAGER)
 	@CollectionTable(name="produto_precos", joinColumns = {@JoinColumn(name = "produto_id", referencedColumnName = "id")})
 	private List<Preco> precos; 
 	
-	@Column(name="sumario_path")
-	private String sumarioPath;
+	@Column(name="imagem_path")
+	private String imagemPath;
 	
 	public String getTitulo() {
 		return titulo;
@@ -92,16 +93,11 @@ public class Produto {
 	public void setDataLancamento(Calendar dataLancamento) {
 		this.dataLancamento = dataLancamento;
 	}
-	
-	@Override
-	public String toString() {
-		return "Produto [titulo=" + titulo + ", descricao=" + descricao + ", paginas=" + paginas + "]";
+	public String getImagemPath() {
+		return imagemPath;
 	}
-	public String getSumarioPath() {
-		return sumarioPath;
-	}
-	public void setSumarioPath(String sumarioPath) {
-		this.sumarioPath = sumarioPath;
+	public void setImagemPath(String imagemPath) {
+		this.imagemPath = imagemPath;
 	}
 	@Override
 	public int hashCode() {
@@ -124,6 +120,12 @@ public class Produto {
 		return true;
 	}
 	
+	@Override
+	public String toString() {
+		return "Produto [id=" + id + ", titulo=" + titulo + ", descricao=" + descricao + ", paginas=" + paginas
+				+ ", dataLancamento=" + dataLancamento + ", precos=" + precos + ", imagemPath=" + imagemPath + "]";
+	}
+
 	public BigDecimal precoPara(TipoPreco tipoPreco) {
 		return precos.stream().filter(preco -> preco.getTipo().equals(tipoPreco))
 				.findFirst().get().getValor();

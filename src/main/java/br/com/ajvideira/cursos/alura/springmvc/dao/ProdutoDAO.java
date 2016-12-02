@@ -25,7 +25,7 @@ public class ProdutoDAO {
 
 	public List<Produto> listar() {
 		List<Produto> produtos = new ArrayList<Produto>();
-		TypedQuery<Produto> query = entityManager.createQuery("SELECT p from Produto p", Produto.class);
+		TypedQuery<Produto> query = entityManager.createQuery("SELECT p FROM Produto p", Produto.class);
 		produtos = query.getResultList();
 
 		return produtos;

@@ -47,8 +47,8 @@
 		</c:forEach>
 
 		<div>
-			<label title="Sumário">Sumário</label>
-			<input type="file" name="sumario" />
+			<label title="Imagem">Imagem</label>
+			<input type="file" name="imagem" />
 		</div>
 
 		<div>

@@ -116,9 +116,9 @@
 					<td class="numeric-cell">${carrinhoCompras.getTotal(item)}</td>
 					<td class="remove-item">
 						<form action="<c:url value="/carrinho/remove" />">
-							<input type="hidden" name="produtoId" value="${item.produtoId}" />
+							<input type="hidden" name="produtoId" value="${item.produto.id}" />
 							<input type="hidden" name="tipoPreco" value="${item.tipoPreco}" />
-							<img src="${contextPath }resources/imagens/excluir.png" alt="Excluir" title="Excluir" />
+				 			<input type="image" src="${contextPath }resources/imagens/excluir.png" alt="Excluir" title="Excluir" />
 						</form>
 					</td>
 				</tr>
@@ -126,9 +126,14 @@
 			</tbody>
 			<tfoot>
 				<tr>
-					<td colspan="3"><input type="submit" class="checkout"
-						name="checkout" value="Finalizar compra" /></td>
-					<td class="quantity-input-cell"><input type="submit"
+					<td colspan="3">
+						<form action="<c:url value="/pagamento/finalizar" />">
+							<!-- FAZER AQUI O FINALIZAR -->
+							<input type="submit" class="checkout" name="checkout" value="Finalizar compra" />
+						</form>
+					</td>
+					<td class="quantity-input-cell">
+					<input type="submit"
 						class="update-cart" disabled="disabled" name="update" value="" /></td>
 					<td class="numeric-cell">${carrinhoCompras.total}</td>
 					<td></td>

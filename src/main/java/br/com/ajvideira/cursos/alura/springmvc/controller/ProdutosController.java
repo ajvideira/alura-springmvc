@@ -50,20 +50,21 @@ public class ProdutosController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView gravar(MultipartFile sumario, @Valid Produto produto, BindingResult results, RedirectAttributes redirectAttributes) {
+	public ModelAndView gravar(MultipartFile imagem, @Valid Produto produto, BindingResult results, RedirectAttributes redirectAttributes) {
 		
-		System.out.println(sumario.getOriginalFilename());
+		System.out.println(imagem.getOriginalFilename());
 		
 		if (results.hasErrors()) {
 			return form(produto);
 		}
 		
-		String path = fileSaver.write("arquivos-sumario", sumario);
-		produto.setSumarioPath(path);
+		String path = fileSaver.write("arquivos-imagem", imagem);
+		produto.setImagemPath(path);
 		
 		produtoDAO.salvar(produto);
 		
 		redirectAttributes.addFlashAttribute("mensagem", "Produto cadastrado com sucesso!");
+		redirectAttributes.addFlashAttribute("tipoMensagem", "success");
 		
 		return new ModelAndView("redirect:/produtos");
 	}
