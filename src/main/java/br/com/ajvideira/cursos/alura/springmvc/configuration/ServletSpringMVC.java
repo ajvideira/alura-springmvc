@@ -1,14 +1,27 @@
 package br.com.ajvideira.cursos.alura.springmvc.configuration;
 
+import java.util.HashSet;
+
 import javax.servlet.Filter;
 import javax.servlet.MultipartConfigElement;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration.Dynamic;
+import javax.servlet.SessionTrackingMode;
 
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class ServletSpringMVC extends AbstractAnnotationConfigDispatcherServletInitializer {
 
+	@Override
+	public void onStartup(ServletContext servletContext) throws ServletException {
+		HashSet<SessionTrackingMode> set = new HashSet<SessionTrackingMode>();
+        set.add(SessionTrackingMode.COOKIE);
+        servletContext.setSessionTrackingModes(set);
+        super.onStartup(servletContext);
+	}
+	
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 		
