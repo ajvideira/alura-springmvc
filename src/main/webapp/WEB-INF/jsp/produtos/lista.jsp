@@ -62,7 +62,7 @@
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<li><a href="#">Home</a></li>
-					<li><a class="active" href="<c:url value="/produtos" />">Produtos</a></li>
+					<li class="active"><a href="<c:url value="/produtos" />">Produtos</a></li>
 					<li><a href="<c:url value="/carrinho" />">Carrinho${carrinhoCompras.quantidade>0 ? '('+=carrinhoCompras.quantidade+=')':''}</a></li>
 				</ul>
 			</div>
@@ -94,6 +94,9 @@
 			<div class="col-md-12">
 				<table class="table table-striped">
 					<thead>
+						<tr>
+							<td colspan="7"><a href="<c:url value="produtos/form" />" class="btn btn-success">Novo Produto</a></td>
+						</tr>
 						<tr>
 							<th width="10%">#</th>
 							<th width="25%">Título</th>

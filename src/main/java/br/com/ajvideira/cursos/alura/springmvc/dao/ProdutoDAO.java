@@ -7,6 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,10 +21,12 @@ public class ProdutoDAO {
 	@PersistenceContext
 	private EntityManager entityManager;
 
+	@CacheEvict(value="allProducts", allEntries=true)
 	public void salvar(Produto produto) {
 		entityManager.persist(produto);
 	}
 
+	@Cacheable(value="allProducts")
 	public List<Produto> listar() {
 		List<Produto> produtos = new ArrayList<Produto>();
 		TypedQuery<Produto> query = entityManager.createQuery("SELECT p FROM Produto p", Produto.class);

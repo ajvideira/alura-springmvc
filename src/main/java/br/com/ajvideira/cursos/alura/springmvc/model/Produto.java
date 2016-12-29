@@ -1,5 +1,6 @@
 package br.com.ajvideira.cursos.alura.springmvc.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.List;
@@ -19,7 +20,12 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="produto")
-public class Produto {
+public class Produto implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8553203437237132822L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

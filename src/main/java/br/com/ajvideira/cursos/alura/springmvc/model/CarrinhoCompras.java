@@ -54,4 +54,8 @@ public class CarrinhoCompras {
 		itens.remove(item);
 	}
 	
+	public void updateAmount(CarrinhoItem item, Integer quantidade) {
+		itens.put(item, quantidade);
+	}
+	
 }

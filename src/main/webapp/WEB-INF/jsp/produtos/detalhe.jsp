@@ -2,221 +2,123 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
 <c:url value="/" var="contextPath" />
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, maximum-scale=1" />
-<link rel="icon"
-	href="//cdn.shopify.com/s/files/1/0155/7645/t/177/assets/favicon.ico?11981592617154272979"
-	type="image/ico" />
-<link href="https://plus.googlecom/108540024862647200608"
-	rel="publisher" />
-<title>Livros de Java, SOA, Android, iPhone, Ruby on Rails e
-	muito mais - Casa do Código</title>
-<link href="${contextPath}resources/css/cssbase-min.css"
-	rel="stylesheet" type="text/css" media="all" />
-<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700'
-	rel='stylesheet' />
-<link href="${contextPath}resources/css/fonts.css" rel="stylesheet"
-	type="text/css" media="all" />
-<link href="${contextPath}resources/css/fontello-ie7.css"
-	rel="stylesheet" type="text/css" media="all" />
-<link href="${contextPath}resources/css/fontello-embedded.css"
-	rel="stylesheet" type="text/css" media="all" />
-<link href="${contextPath}resources/css/fontello.css" rel="stylesheet"
-	type="text/css" media="all" />
-<link href="${contextPath}resources/css/style.css" rel="stylesheet"
-	type="text/css" media="all" />
-<link href="${contextPath}resources/css/layout-colors.css"
-	rel="stylesheet" type="text/css" media="all" />
-<link href="${contextPath}resources/css/responsive-style.css"
-	rel="stylesheet" type="text/css" media="all" />
-<link href="${contextPath}resources/css/guia-do-programador-style.css"
-	rel="stylesheet" type="text/css" media="all" />
-<link href="${contextPath}resources/css/produtos.css" rel="stylesheet"
-	type="text/css" media="all" />
-<link rel="canonical" href="http://www.casadocodigo.com.br/" />
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description"
+	content="Site desenvolvido no curso de SpringMVC da alura. ">
+<meta name="author" content="ajvideira">
+<!--<link rel="icon" href="../../favicon.ico">-->
+
+<title>Alura - SpringMVC</title>
+
+<!-- Bootstrap core CSS -->
+<link href="${contextPath}resources/css/bootstrap.min.css"
+	rel="stylesheet">
+<!-- Bootstrap theme -->
+<link href="${contextPath}resources/css/bootstrap-theme.min.css"
+	rel="stylesheet">
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<link
+	href="${contextPath}resources/css/ie10-viewport-bug-workaround.css"
+	rel="stylesheet">
+
+<link href="${contextPath}resources/css/style.css" rel="stylesheet">
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"
+	integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+	crossorigin="anonymous"></script>
+
+<script src="${contextPath}resources/js/bootstrap.min.js"></script>
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
 </head>
 <body>
-
-	<header id="layout-header">
-		<div class="clearfix container">
-			<a href="/" id="logo"> </a>
-			<div id="header-content">
-				<nav id="main-nav">
-
-					<ul class="clearfix">
-						<li><a href="<c:url value="/carrinho" />" rel="nofollow">Carrinho${carrinhoCompras.quantidade>0 ? '('+=carrinhoCompras.quantidade+=')':''}</a></li>
-
-						<li><a href="/pages/sobre-a-casa-do-codigo" rel="nofollow">Sobre
-								Nós</a></li>
-
-						<li><a href="/pages/perguntas-frequentes" rel="nofollow">Perguntas
-								Frequentes</a></li>
-					</ul>
-				</nav>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Alura - SpringMVC</a>
 			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="#">Home</a></li>
+					<li class="active"><a href="<c:url value="/produtos" />">Produtos</a></li>
+					<li><a href="<c:url value="/carrinho" />">Carrinho${carrinhoCompras.quantidade>0 ? '('+=carrinhoCompras.quantidade+=')':''}</a></li>
+				</ul>
+			</div>
+			<!--/.navbar-collapse -->
 		</div>
-	</header>
-	<nav class="categories-nav">
-		<ul class="container">
-			<li class="category"><a href="http://www.casadocodigo.com.br">Home</a></li>
-			<li class="category"><a href="/collections/livros-de-agile">
-					Agile </a></li>
-			<li class="category"><a href="/collections/livros-de-front-end">
-					Front End </a></li>
-			<li class="category"><a href="/collections/livros-de-games">
-					Games </a></li>
-			<li class="category"><a href="/collections/livros-de-java">
-					Java </a></li>
-			<li class="category"><a href="/collections/livros-de-mobile">
-					Mobile </a></li>
-			<li class="category"><a
-				href="/collections/livros-desenvolvimento-web"> Web </a></li>
-			<li class="category"><a href="/collections/outros"> Outros </a></li>
-		</ul>
 	</nav>
 
-	<article id="livro-css-eficiente">
-		<header id="product-highlight" class="clearfix">
-			<div id="product-overview" class="container">
-				<img width="280px" height="395px"
-					src="http://cdn.shopify.com/s/files/1/0155/7645/products/css-eficiente-featured_large.png?v=1435245145"
-					class="product-featured-image" />
-				<h1 class="product-title">${produto.titulo}</h1>
-				<p class="product-author">
-					<span class="product-author-link"> </span>
-				</p>
-
-				<p class="book-description">${produto.descricao}</p>
-			</div>
-		</header>
-
-
-		<section class="buy-options clearfix">
-			<form action="<c:url value="/carrinho/add" />" method="post" class="container">
-				<input type="hidden" name="produtoId" value="${produto.id}" />
-				<ul id="variants" class="clearfix">
-					<c:forEach items="${produto.precos}" var="preco">
-					<li class="buy-option">
-						<input type="radio" name="tipoPreco" class="variant-radio" id="product-variant-9720393823" value="${preco.tipo}" checked="checked" /> 
-						<label class="variant-label" for="product-variant-9720393823">${preco.tipo}</label> 
-							<small class="compare-at-price">R$ 39,90</small>
-						<p class="variant-price">${preco.valor}</p></li>
-					</c:forEach>
-				</ul>
-				<button type="submit" class="submit-image icon-basket-alt"
-					title="Compre Agora" title="Compre Agora"></button>
-				
-			</form>
-
-		</section>
-
+	<!-- Main jumbotron for a primary marketing message or call to action -->
+	<div class="jumbotron">
 		<div class="container">
-			<section class="summary">
-				<ul>
-					<li><h3>
-							E muito mais... <a href='/pages/sumario-java8'>veja o sumário</a>.
-						</h3></li>
-				</ul>
-			</section>
-
-			<section class="data product-detail">
-				<h2 class="section-title">Dados do livro:</h2>
-				<p>
-					Número de páginas: <span>${produto.paginas}</span>
-				</p>
-				<p></p>
-				<p>Data de publicação: <fmt:formatDate pattern="dd/MM/yyyy" value="${produto.dataLancamento.time}" /></p>
-				<p>
-					Encontrou um erro? <a href='/submissao-errata' target='_blank'>Submeta
-						uma errata</a>
-				</p>
-			</section>
+			<h1>Detalhe do Produto </h1>
 		</div>
+	</div>
 
-	</article>
-
-	<footer id="layout-footer">
-		<div class="clearfix container">
-
-
-
-
-			<div id="collections-footer">
-				<!-- cdc-footer -->
-				<p class="footer-title">Coleções de Programação</p>
-				<ul class="footer-text-links">
-					<li><a href="/collections/livros-de-java">Java</a></li>
-					<li><a href="/collections/livros-desenvolvimento-web">Desenvolvimento
-							Web</a></li>
-					<li><a href="/collections/livros-de-mobile">Mobile</a></li>
-					<li><a href="/collections/games">Games</a></li>
-					<li><a href="/collections/livros-de-front-end">Front End</a></li>
-				</ul>
-				<p class="footer-title">Outros Assuntos</p>
-				<ul class="footer-text-links">
-					<li><a href="/collections/livros-de-agile">Agile</a></li>
-					<li><a href="/collections/outros">e outros...</a></li>
-				</ul>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<img src="${contextPath+=produto.imagemPath}" class="img-responsive" />
 			</div>
-			<div id="social-footer">
-				<!-- books-footer -->
-				<p class="footer-title">Links da Casa do Código</p>
-				<ul class="footer-text-links">
-					<li><a href="http://livros.casadocodigo.com.br" rel="nofollow">Meus
-							E-books</a></li>
-					<li><a href="/pages/sobre-a-casa-do-codigo">Sobre a Casa
-							do Código</a></li>
-					<li><a href="/pages/perguntas-frequentes">Perguntas
-							Frequentes</a></li>
-					<li><a href="https://www.caelum.com.br">Caelum - Ensino e
-							Inovação</a></li>
-					<li><a href="http://www.codecrushing.com/" rel="nofollow">Code
-							Crushing</a></li>
-					<li><a
-						href="http://www.casadocodigo.com.br/pages/politica-de-privacidade"
-						rel="nofollow">Política de Privacidade</a></li>
-				</ul>
-				<p class="footer-title">Redes Sociais</p>
-				<ul>
-					<li class="social-links"><a
-						href="http://www.twitter.com/casadocodigo" target="_blank"
-						id="twitter" rel="nofollow">Facebook</a> <a
-						href="http://www.facebook.com/casadocodigo" target="_blank"
-						id="facebook" rel="nofollow">Twitter</a></li>
-				</ul>
-			</div>
-			<div id="newsletter-footer">
-				<!-- social-footer -->
-				<p class="footer-title">Receba as Novidades e Lançamentos</p>
-				<div id="form-newsletter">
-					<form action="" method="POST" id="ss-form" class="form-newsletter">
-						<ul>
-							<li><input type="hidden" name="pageNumber" value="0" /><input
-								type="hidden" name="backupCache" value="" /><input type="email"
-								name="entry.0.single" value="" class="ss-q-short" id="entry_0"
-								placeholder="seu@email.com" /></li>
-							<li><input type="submit" name="submit"
-								value="Quero Receber!" id="submit-newsletter" /></li>
-						</ul>
-					</form>
-					<ul>
-						<li class="ie8"><a href="" rel="nofollow">Receba as
-								Novidades e Lançamentos</a></li>
-					</ul>
+			<div class="col-md-9">
+				<div class="row">
+					<div class="col-md-6"><h1>${produto.titulo}</h1></div>
 				</div>
-				<ul class="footer-payments">
-					<li></li>
-					<li></li>
-				</ul>
+				<div class="row">
+					<div class="col-md-6"><p>${produto.descricao}</p></div>
+				</div>
+				<div class="row">
+					<div class="col-md-6"><p><strong>Número de páginas: </strong><span>${produto.paginas}</span>
+					</p></div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<p><strong>Data de publicação: </strong><fmt:formatDate pattern="dd/MM/yyyy" value="${produto.dataLancamento.time}" /></p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<form action="<c:url value="/carrinho/add" />" method="post">
+							<input type="hidden" name="produtoId" value="${produto.id}" />
+							<div class="form-group">
+								<select class="form-control" name="tipoPreco">
+									<c:forEach items="${produto.precos}" var="preco">								
+										<option value="${preco.tipo}">${preco.tipo} => <fmt:formatNumber type="currency" value="${preco.valor}" /> </option>
+									</c:forEach>
+								</select>
+							</div>
+							<div class="form-group">
+								<button type="submit" class="btn btn-primary form-control" title="Compre Agora" title="Compre Agora">Compre Agora</button>
+							</div>
+						</form>
+					</div>
+				</div>
 			</div>
 		</div>
-	</footer>
+	</div>
+
 </body>
 </html>
