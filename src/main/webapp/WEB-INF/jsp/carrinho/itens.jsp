@@ -62,7 +62,7 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="#">Home</a></li>
+					<li><a href="<c:url value="/" />">Home</a></li>
 					<li><a href="<c:url value="/produtos" />">Produtos</a></li>
 					<li class="active"><a href="<c:url value="/carrinho" />">Carrinho${carrinhoCompras.quantidade>0 ? '('+=carrinhoCompras.quantidade+=')':''}</a></li>
 				</ul>
