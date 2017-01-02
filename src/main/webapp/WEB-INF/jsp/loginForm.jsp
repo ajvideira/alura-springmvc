@@ -3,7 +3,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="sec"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -47,47 +49,25 @@
 </head>
 </head>
 <body>
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-					aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Alura - SpringMVC</a>
-			</div>
-			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="<c:url value="/" />">Home</a></li>
-					<sec:authorize access="isAuthenticated()"><li><a href="<c:url value="/produtos" />">Produtos</a></li></sec:authorize>
-					<li><a href="<c:url value="/carrinho" />">Carrinho${carrinhoCompras.quantidade>0 ? '('+=carrinhoCompras.quantidade+=')':''}</a></li>
-				</ul>
-				<sec:authorize access="isAuthenticated()">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#">Bem vindo <strong><sec:authentication property="principal.nome"/></strong></a></li>
-					</ul>
-				</sec:authorize>
-			</div>
-			<!--/.nav-collapse -->
-		</div>
-		<!--/.container-fluid -->
-	</nav>
+	<div class="container">
 
-	<!-- Main jumbotron for a primary marketing message or call to action -->
-	<div class="jumbotron">
-		<div class="container">
-			<h1>Bem vindo!</h1>
-			<p>Esse site é o projeto final desenvolvido no curso de SpringMVC
-				da Alura. Diversas funcionalidades do framework são utilizadas.
-				Sinta-se a vontade para navegar.</p>
-			<p>
-				<a class="btn btn-primary btn-lg" href="<c:url value="/produtos" />"
-					role="button">Comece &raquo;</a>
-			</p>
-		</div>
+		<form:form class="form-signin" servletRelativeAction="/login" method="post">
+			<h2 class="form-signin-heading">Identifique-se aqui</h2>
+			<label for="inputEmail" class="sr-only">E-mail</label> 
+			<input type="email" id="inputEmail" class="form-control"
+				placeholder="Email address" required autofocus name="username" /> 
+			<label for="inputPassword" class="sr-only">Senha</label> 
+			<input type="password" id="inputPassword" class="form-control"
+				placeholder="Password" required name="password" />
+			<div class="checkbox">
+				<label> <input type="checkbox" value="remember-me">
+					Lembrar meus dados
+				</label>
+			</div>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+		</form:form>
+
 	</div>
+	<!-- /container -->
 </body>
 </html>

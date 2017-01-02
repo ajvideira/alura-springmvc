@@ -101,7 +101,7 @@
 				</div>
 				<div class="row">
 					<div class="col-md-6">
-						<form action="<c:url value="/carrinho/add" />" method="post">
+						<form:form servletRelativeAction="/carrinho/add" method="post">
 							<input type="hidden" name="produtoId" value="${produto.id}" />
 							<div class="form-group">
 								<select class="form-control" name="tipoPreco">
@@ -113,7 +113,7 @@
 							<div class="form-group">
 								<button type="submit" class="btn btn-primary form-control" title="Compre Agora" title="Compre Agora">Compre Agora</button>
 							</div>
-						</form>
+						</form:form>
 					</div>
 				</div>
 			</div>
