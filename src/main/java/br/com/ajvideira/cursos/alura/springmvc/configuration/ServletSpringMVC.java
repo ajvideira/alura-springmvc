@@ -29,11 +29,12 @@ public class ServletSpringMVC extends AbstractAnnotationConfigDispatcherServletI
 	
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		
-		System.setProperty("http.proxyHost", "localhost");
-        System.setProperty("http.proxyPort", "3128");
-        System.setProperty("https.proxyHost", "localhost");
-        System.setProperty("https.proxyPort", "3128");
+		if (System.getProperty("spring.profiles.active") == null) {
+			System.setProperty("http.proxyHost", "localhost");
+        	System.setProperty("http.proxyPort", "3128");
+        	System.setProperty("https.proxyHost", "localhost");
+        	System.setProperty("https.proxyPort", "3128");
+		}
 		
 		return new Class[] {AppWebConfiguration.class, JPAConfiguration.class, JPAProductionConfiguration.class, SecurityConfiguration.class};
 	}
