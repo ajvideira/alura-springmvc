@@ -1,22 +1,24 @@
 package br.com.ajvideira.cursos.alura.springmvc.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.annotation.RequestScope;
-import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.support.RequestContextUtils;
 
 import br.com.ajvideira.cursos.alura.springmvc.dao.ProdutoDAO;
+import br.com.ajvideira.cursos.alura.springmvc.dao.UsuarioDAO;
 import br.com.ajvideira.cursos.alura.springmvc.model.Produto;
+import br.com.ajvideira.cursos.alura.springmvc.model.Role;
+import br.com.ajvideira.cursos.alura.springmvc.model.Usuario;
 
 @Controller
 @RequestScope
@@ -24,6 +26,9 @@ public class HomeController {
 	
 	@Autowired
 	private ProdutoDAO produtoDAO;
+	
+	@Autowired
+	private UsuarioDAO usuarioDAO;
 	
 	@RequestMapping("/")
 	public ModelAndView index(HttpServletRequest request, HttpServletResponse response) {
@@ -36,6 +41,21 @@ public class HomeController {
         //localeResolver.setLocale(request, response, Locale.US);
 		
 		return modelAndView;
+	}
+	
+	@Transactional
+	@RequestMapping("/inicializar-app")
+	public ModelAndView inicializarApp(HttpServletRequest request, HttpServletResponse response) {
+		
+		Usuario usuario = new Usuario(); 
+	    usuario.setNome("Administrador");
+	    usuario.setEmail("admin@email.com");
+	    usuario.setSenha("$2a$10$lt7pS7Kxxe5JfP.vjLNSyOXP11eHgh7RoPxo5fvvbMCZkCUss2DGu");
+	    usuario.setRoles(Arrays.asList(new Role("ROLE_ADMIN")));
+		
+	    usuarioDAO.gravar(usuario);
+	    
+		return index(request, response);
 	}
 
 }

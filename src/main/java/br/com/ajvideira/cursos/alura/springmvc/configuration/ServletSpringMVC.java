@@ -14,14 +14,17 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class ServletSpringMVC extends AbstractAnnotationConfigDispatcherServletInitializer {
-
+	
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
 		super.onStartup(servletContext);
 		HashSet<SessionTrackingMode> set = new HashSet<SessionTrackingMode>();
         set.add(SessionTrackingMode.COOKIE);
         servletContext.setSessionTrackingModes(set);
-        servletContext.setInitParameter("spring.profiles.active", "dev");
+        //servletContext.setInitParameter("spring.profiles.active", "dev");
+        if (System.getProperty("spring.profiles.active") == null) {
+        	servletContext.setInitParameter("spring.profiles.active", "dev");
+        }
 	}
 	
 	@Override
@@ -32,7 +35,7 @@ public class ServletSpringMVC extends AbstractAnnotationConfigDispatcherServletI
         System.setProperty("https.proxyHost", "localhost");
         System.setProperty("https.proxyPort", "3128");
 		
-		return new Class[] {AppWebConfiguration.class, JPAConfiguration.class, SecurityConfiguration.class};
+		return new Class[] {AppWebConfiguration.class, JPAConfiguration.class, JPAProductionConfiguration.class, SecurityConfiguration.class};
 	}
 
 	@Override

@@ -26,6 +26,14 @@ public class Role implements GrantedAuthority {
 	@Column(name="NOME")
 	private String nome;
 
+	public Role() {
+		
+	}
+	
+	public Role(String nome) {
+		this.nome = nome;
+	}
+	
 	public String getNome() {
 		return nome;
 	}
