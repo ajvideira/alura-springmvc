@@ -50,6 +50,7 @@ public class HomeController {
 		Usuario usuario = new Usuario(); 
 	    usuario.setNome("Administrador");
 	    usuario.setEmail("admin@email.com");
+	    usuario.setLocale("pt_BR");
 	    usuario.setSenha("$2a$10$lt7pS7Kxxe5JfP.vjLNSyOXP11eHgh7RoPxo5fvvbMCZkCUss2DGu");
 	    usuario.setRoles(Arrays.asList(new Role("ROLE_ADMIN")));
 		
