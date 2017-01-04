@@ -57,7 +57,7 @@
 										<br />
 									</c:forEach></td>
 								<td><a class="btn btn-primary btn-lg"
-										href="<c:url value="produtos/detalhe/${produto.id}" />"
+										href="<c:url value="/produtos/detalhe/${produto.id}" />"
 										role="button">Visualizar</a></td>
 							</tr>
 						</c:forEach>
