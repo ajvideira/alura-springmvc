@@ -2,6 +2,7 @@ package br.com.ajvideira.cursos.alura.springmvc.configuration;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
@@ -15,6 +16,8 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.format.datetime.DateFormatter;
 import org.springframework.format.datetime.DateFormatterRegistrar;
 import org.springframework.format.support.FormattingConversionService;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.web.accept.ContentNegotiationManager;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartResolver;
@@ -132,6 +135,20 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter {
     	CookieLocaleResolver localeResolver = new CookieLocaleResolver();
     	
     	return localeResolver;
+    }
+    
+    @Bean
+    public MailSender mailSender() {
+    	JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+    	
+    	Properties mailProperties = System.getProperties();
+    	mailProperties.put( "mail.smtp.host", "prosmtp.procempa.com.br" );
+    	//mailProperties.put("mail.smtp.auth", true);
+    	//mailProperties.put("mail.smtp.starttls.enable", true);
+    	
+    	mailSender.setJavaMailProperties(mailProperties);
+    	
+    	return mailSender;
     }
 
 }
