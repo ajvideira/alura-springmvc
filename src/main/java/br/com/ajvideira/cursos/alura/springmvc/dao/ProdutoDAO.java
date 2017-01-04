@@ -1,5 +1,6 @@
 package br.com.ajvideira.cursos.alura.springmvc.dao;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.ajvideira.cursos.alura.springmvc.model.Produto;
+import br.com.ajvideira.cursos.alura.springmvc.model.TipoPreco;
 
 @Repository
 @Transactional
@@ -38,6 +40,11 @@ public class ProdutoDAO {
 	public Produto find(Integer id) {
 		return entityManager.createQuery("SELECT p FROM Produto p JOIN FETCH p.precos WHERE p.id = :id", Produto.class)
 				.setParameter("id", id).getSingleResult();
+	}
+	
+	public BigDecimal sumAllProductsByType(TipoPreco tipo) {
+		return entityManager.createQuery("SELECT SUM(pr.valor) FROM Produto p JOIN p.precos pr WHERE pr.tipo = :tipo", BigDecimal.class)
+				.setParameter("tipo", tipo).getSingleResult();
 	}
 
 }

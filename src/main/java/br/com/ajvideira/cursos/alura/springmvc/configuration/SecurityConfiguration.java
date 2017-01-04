@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import br.com.ajvideira.cursos.alura.springmvc.dao.UsuarioDAO;
+import br.com.ajvideira.cursos.alura.springmvc.handler.SuccessLoginHandler;
 
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -28,7 +29,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.antMatchers("/produtos/**").permitAll()
 			.antMatchers("**").permitAll()
 			.anyRequest().authenticated()
-			.and().formLogin().loginPage("/login").defaultSuccessUrl("/", true).permitAll()
+			.and().formLogin().loginPage("/login").defaultSuccessUrl("/", true).successHandler(new SuccessLoginHandler()).permitAll()
 			.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/").permitAll();
 	}
 	

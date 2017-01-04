@@ -44,6 +44,9 @@ public class Usuario implements UserDetails {
     @JoinTable(name = "usuario_role", joinColumns = @JoinColumn(name = "usuario_id", referencedColumnName="id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName="id"))
 	private List<Role> roles;
 
+	@Column(name="LOCALE")
+	private String locale;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -82,6 +85,14 @@ public class Usuario implements UserDetails {
 
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
+	}
+
+	public String getLocale() {
+		return locale;
+	}
+
+	public void setLocale(String locale) {
+		this.locale = locale;
 	}
 
 	@Override

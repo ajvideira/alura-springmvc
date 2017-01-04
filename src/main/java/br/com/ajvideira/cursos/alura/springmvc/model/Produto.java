@@ -52,6 +52,20 @@ public class Produto implements Serializable {
 	@Column(name="imagem_path")
 	private String imagemPath;
 	
+	public Produto() {
+		
+	}
+	
+	public Produto(Builder builder) {
+		this.id = builder.id;
+		this.titulo = builder.titulo;
+		this.descricao = builder.descricao;
+		this.paginas = builder.paginas;
+		this.dataLancamento = builder.dataLancamento;
+		this.precos = builder.precos; 
+		this.imagemPath = builder.imagemPath;
+	}
+
 	public String getTitulo() {
 		return titulo;
 	}
@@ -135,6 +149,55 @@ public class Produto implements Serializable {
 	public BigDecimal precoPara(TipoPreco tipoPreco) {
 		return precos.stream().filter(preco -> preco.getTipo().equals(tipoPreco))
 				.findFirst().get().getValor();
+	}
+	
+	public static class Builder {
+		private Integer id;
+		private String titulo;
+		private String descricao;
+		private Integer paginas;
+		private Calendar dataLancamento;
+		private List<Preco> precos; 
+		private String imagemPath;
+		
+		public Builder(String titulo) {
+			this.titulo = titulo;
+		}
+		
+		public Builder id(Integer id) {
+			this.id = id;
+			return this;
+		}
+		
+		public Builder descricao(String descricao) {
+			this.descricao = descricao;
+			return this;
+		}
+		
+		public Builder paginas(Integer paginas) {
+			this.paginas = paginas;
+			return this;
+		}
+		
+		public Builder dataLancamento(Calendar dataLancamento) {
+			this.dataLancamento = dataLancamento;
+			return this;
+		}
+		
+		public Builder precos(List<Preco> precos) {
+			this.precos = precos;
+			return this;
+		}
+		
+		public Builder imagemPath(String imagemPath) {
+			this.imagemPath = imagemPath;
+			return this;
+		}
+		
+		public Produto build() {
+			return new Produto(this);
+		}	
+		
 	}
 	
 }

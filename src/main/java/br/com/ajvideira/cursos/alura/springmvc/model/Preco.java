@@ -19,6 +19,15 @@ public class Preco implements Serializable {
 	
 	@Enumerated(EnumType.STRING)
 	private TipoPreco tipo;
+	
+	public Preco() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Preco(TipoPreco tipo, BigDecimal valor) {
+		this.tipo = tipo;
+		this.valor = valor;
+	}
 
 	public BigDecimal getValor() {
 		return valor;
