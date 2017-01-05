@@ -15,9 +15,8 @@
 	<div class="container">
 
 
-		<form class="form-vertical" data-toggle="validator" role="form"
-			action="<c:url value="/produtos" />" method="post"
-			enctype="multipart/form-data">
+		<form:form cssClass="form-vertical" data-toggle="validator" role="form"
+			servletRelativeAction="/produtos" method="post" enctype="multipart/form-data">
 
 			<div class="row">
 				<s:bind path="produto.titulo">
@@ -83,6 +82,6 @@
 			<div class="form-group">
 				<button class="btn btn-primary">Enviar</button>
 			</div>
-		</form>
+		</form:form>
 	</div>
 </tags:pageTemplate>
