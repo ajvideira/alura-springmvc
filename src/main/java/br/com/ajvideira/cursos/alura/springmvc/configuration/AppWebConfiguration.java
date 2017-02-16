@@ -45,6 +45,7 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 		resolver.setPrefix("/WEB-INF/jsp/");
 		resolver.setSuffix(".jsp");
 
+		//Descomentar para ter todos os beans como atributos, pode ser arriscado
 		// resolver.setExposeContextBeansAsAttributes(true);
 
 		resolver.setExposedContextBeanNames("carrinhoCompras");
